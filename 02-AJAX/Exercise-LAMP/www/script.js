@@ -71,13 +71,11 @@ function fillWeather(){
       document.querySelector("section.week table caption").innerHTML = selectedCity;
       document.querySelector("section.week table caption").style.display = "block";
       document.querySelector("section.week table").style.display = "inline-block";
+
       for (var i = 0; i < rows.length; i++) {
-         var firstCell = 
-             rows[i].getElementsByTagName("td")[0];
-         var secondCell = 
-             rows[i].getElementsByTagName("td")[1];
-         var thirdCell = 
-             rows[i].getElementsByTagName("td")[2];
+         var firstCell = rows[i].getElementsByTagName("td")[0];
+         var secondCell = rows[i].getElementsByTagName("td")[1];
+         var thirdCell = rows[i].getElementsByTagName("td")[2];
          firstCell.innerHTML = days[dayOfWeek];
 
          if (dayOfWeek + 1 === 7) {
@@ -85,11 +83,8 @@ function fillWeather(){
          }else {
             dayOfWeek++;
          }
-     } 
-      
 
-      var sun = Math.round((1 - 
-         weatherReport.daily.data[i].cloudCover) *100, 0)
+         var sun = Math.round((1 - weatherReport.daily.data[i].cloudCover) *100, 0);
      
      if (sun > 90) {
          secondCell.style.color = "rgb(255,171,0)";
@@ -124,13 +119,16 @@ function fillWeather(){
      secondCell.style.fontSize = "2.5em";
      thirdCell.innerHTML = sun + "%";
       
-   }
-   
+      }
+      document.querySelector("section.week table caption").style.display = "block";
+      document.querySelector("section.week table").style.display = "inline-block";
+
+   }    
    document.querySelector("section.week p.credit").style.display = "block";
 }
 
-
 var locations = document.querySelectorAll("section ul li");
+
 for (var i = 0; i < locations.length; i++) {
    if (locations[i].addEventListener) {
       locations[i].addEventListener("click", getWeather, false);
